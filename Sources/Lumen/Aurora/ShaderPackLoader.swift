@@ -1,26 +1,36 @@
 import Foundation
+import Metal
+import QuartzCore
+import AppKit
 
-/// Beschreibt einen Shader (Name + Quelldatei). Später erweitert um
-/// Uniforms (Zeit, Batterie, Helligkeit) und Metadaten (Autor, Lizenz).
+/// Ein Shader-Paket: Name + Fragment-Funktionsname + Quelldatei.
 struct ShaderDescriptor: Equatable {
     let name: String
-    let sourcePath: String?
+    let fragmentFunction: String
+    let sourceFile: String // Dateiname im Resources/Shaders-Ordner
 }
 
-/// Lädt Shader aus dem App-Bundle (Resources/Shaders) und später aus
-/// `.lumen-shader` Bundles, die Nutzer hinzufügen.
+/// Lädt Shader-Quelltext aus dem App-Bundle und (später) aus Nutzer-Packs.
 enum ShaderPackLoader {
 
-    static func loadBundledShaders() -> [ShaderDescriptor] {
-        let bundled = ["Nebula", "AuroraBorealis", "PlasmaField"]
-        return bundled.map { name in
-            let path = Bundle.main.url(forResource: name, withExtension: "metal", subdirectory: "Shaders")?.path
-            return ShaderDescriptor(name: name, sourcePath: path)
-        }
-    }
+    static let bundled: [ShaderDescriptor] = [
+        ShaderDescriptor(name: "Nebula",         fragmentFunction: "nebula_fragment",  sourceFile: "Nebula.metal"),
+        ShaderDescriptor(name: "Aurora Borealis", fragmentFunction: "aurora_fragment", sourceFile: "AuroraBorealis.metal"),
+        ShaderDescriptor(name: "Plasma Field",   fragmentFunction: "plasma_fragment",  sourceFile: "PlasmaField.metal")
+    ]
 
-    static func loadUserPacks(from directory: URL) -> [ShaderDescriptor] {
-        // TODO: ~/.lumen/shaders/ scannen nach .lumen-shader Bundles
-        return []
+    /// Liefert den kombinierten Quelltext (Common + Shader) für makeLibrary(source:).
+    static func source(for shader: ShaderDescriptor) -> String? {
+        let dir = "Shaders"
+        guard
+            let commonURL = Bundle.main.url(forResource: "Common", withExtension: "metal", subdirectory: dir),
+            let shaderURL = Bundle.main.url(forResource: shader.sourceFile, withExtension: nil, subdirectory: dir),
+            let common = try? String(contentsOf: commonURL, encoding: .utf8),
+            let body   = try? String(contentsOf: shaderURL, encoding: .utf8)
+        else {
+            LumenLog.error("Shader-Quelltext nicht gefunden: \(shader.sourceFile)", category: "aurora")
+            return nil
+        }
+        return common + "\n" + body
     }
 }
