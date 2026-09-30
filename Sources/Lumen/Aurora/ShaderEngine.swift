@@ -28,7 +28,7 @@ final class ShaderEngine {
 
     private init() {
         device = MTLCreateSystemDefaultDevice()!
-        commandQueue = device.makeCommandQueue()
+        commandQueue = device.makeCommandQueue()!
         activeShader = ShaderPackLoader.bundled.first
             ?? ShaderDescriptor(name: "Nebula", fragmentFunction: "nebula_fragment", sourceFile: "Nebula.metal")
         // 4-Byte Float für das Zeit-Uniform.
@@ -120,23 +120,16 @@ final class ShaderEngine {
     }
 
     private func renderFrame() {
-        guard isRunning, let pipeline = pipeline, let queue = commandQueue as MTLCommandQueue? else { return }
+        guard isRunning, let pipeline = pipeline else { return }
 
         let t = Float(CACurrentMediaTime() - startTime)
-        if let ub = uniformBuffer, let ptr = ub.contents().bindMemory(to: Float.self, capacity: 1) {
+        if let ub = uniformBuffer {
+            let ptr = ub.contents().bindMemory(to: Float.self, capacity: 1)
             ptr.pointee = t
         }
 
         for overlay in overlays {
-            guard let drawable = overlay.drawable() else { continue }
-            guard let cmd = queue.makeCommandBuffer(),
-                  let enc = cmd.makeRenderCommandEncoder(descriptor: overlay.passDescriptor()) else { continue }
-            enc.setRenderPipelineState(pipeline)
-            enc.setFragmentBuffer(uniformBuffer, offset: 0, index: 0)
-            enc.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
-            enc.endEncoding()
-            cmd.present(drawable)
-            cmd.commit()
+            overlay.render(pipeline: pipeline, uniform: uniformBuffer, queue: commandQueue)
         }
     }
 }
