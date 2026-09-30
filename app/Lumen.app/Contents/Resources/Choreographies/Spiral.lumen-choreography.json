@@ -1,0 +1,11 @@
+{
+  "name": "Spiral",
+  "description": "Arrangiert alle Fenster entlang einer goldenen Spirale, von innen nach außen.",
+  "layout": "spiral",
+  "params": {
+    "turns": 2.5,
+    "spacing": 0.08,
+    "center_bias": 0.35
+  },
+  "hotkey": "option+shift+m"
+}

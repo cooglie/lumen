@@ -1,5 +1,6 @@
 # Xcode / SPM build artifacts
 .build/
+.build-x86/
 .swiftpm/
 DerivedData/
 *.xcodeproj/xcuserdata/
