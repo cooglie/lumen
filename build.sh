@@ -57,6 +57,9 @@ cp "$BUILD/Lumen" "$APP_DIR/Contents/MacOS/Lumen"
 # Info.plist
 cp "$ROOT/app/Info.plist" "$APP_DIR/Contents/Info.plist"
 
+# App-Icon
+cp "$ROOT/app/AppIcon.icns" "$APP_DIR/Contents/Resources/AppIcon.icns"
+
 # Shader-Ressourcen
 cp "$SRC/Resources/Shaders/"*.metal "$APP_DIR/Contents/Resources/Shaders/"
 cp "$SRC/Resources/Choreographies/"*.json "$APP_DIR/Contents/Resources/Choreographies/"
