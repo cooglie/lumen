@@ -1,0 +1,11 @@
+{
+  "name": "Fan",
+  "description": "Stellt alle Fenster wie einen Fächer vom unteren Bildschirmrand auf.",
+  "layout": "fan",
+  "params": {
+    "spread": 120,
+    "radius": 0.6,
+    "scale": 0.45
+  },
+  "hotkey": "option+shift+f"
+}
