@@ -2,10 +2,10 @@
 
 > **Licht trifft Bewegung.** Eine Open-Source macOS-Menüleisten-App, die deinen Desktop in eine lebende Leinwand verwandelt — durch GPU-Shader-Hintergründe und choreografierte Fenster-Performances.
 
-Lumen vereint zwei fancy Konzepte in einem nativen Mac-Projekt:
 
-- **🪐 Aurora** — eine Shader-Wallpaper-Engine: Ersetze statische Desktop-Hintergründe durch fließende Metal-Shader (Nebel, Partikel, Tag/Nacht-Übergänge). Mit eingebautem Editor und Community-Sharen.
-- **🎭 Mosaic** — Fenster-Choreografie: Kein Tiling-Manager, sondern Fenster als *Performance*. Hotkeys lassen alle Fenster in choreografierten Mustern gleiten — Spiralen, Gitter, Fächer — mit Physik (Federung, Trägheit).
+
+- **🪐 Aurora** 
+- **🎭 Mosaic**
 
 ---
 
