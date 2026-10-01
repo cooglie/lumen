@@ -45,28 +45,7 @@ Sources/Lumen/
 └── UI/                   # SwiftUI-Panels (Glas, Vibrancy)
 ```
 
-## 🚀 Roadmap
 
-- [x] Repo-Setup & Architektur
-- [ ] Aurora: Metal-Renderer + erstes Shader-Beispiel
-- [ ] Aurora: Wallpaper-Bridge (`NSWorkspace`/Spaces)
-- [ ] Aurora: Shader-Editor
-- [ ] Mosaic: Window-Enumeration via Accessibility-API
-- [ ] Mosaic: Physik-Engine & erste Choreografie (Grid)
-- [ ] Core: Globaler Hotkey-Manager
-- [ ] UI: Menüleisten-Dropdown + Settings
-- [ ] v0.1 Release (Universal Binary, notarized)
-
-## 🛠️ Tech-Stack
-
-| Bereich | Technologie |
-|---|---|
-| Sprache | Swift 5.9+ |
-| UI | SwiftUI + AppKit (Menüleiste) |
-| Shader | Metal Shading Language (MSL) / GLSL→MSL |
-| Fenster | `AXUIElement`, `CGS*` private APIs |
-| Speicher | SwiftData / JSON |
-| Bau | Swift Package Manager |
 
 ## 📦 Build
 
@@ -75,16 +54,9 @@ swift build
 swift run Lumen
 ```
 
-> Hinweis: Für Wallpaper- & WindowServer-APIs wird später ein signiertes Xcode-Projekt nötig (TCC-Berechtigungen). Das SPM-Gerüst dient der Modul-Entwicklung.
 
-## 🤝 Beitragen
 
-Lumen ist Open Source (MIT). Wir suchen besonders:
-- **Shader-Künstler** für Aurora-Vorlagen
-- **Choreografen** für Mosaic-Muster (JSON)
-- Swift/Metal-Entwickler für die Engine
 
-Siehe `CONTRIBUTING.md` (folgt).
 
 ## 📜 Lizenz
 
