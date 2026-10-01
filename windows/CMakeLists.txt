@@ -17,6 +17,16 @@ add_executable(Lumen WIN32
 
 target_include_directories(Lumen PRIVATE src)
 
+# D3D11 + moderne Win32-APIs brauchen hohe Version-Makros.
+target_compile_definitions(Lumen PRIVATE
+    _WIN32_WINNT=0x0A00
+    WINVER=0x0A00
+    NTDDI_VERSION=0x0A000000
+    NOMINMAX
+    UNICODE
+    _UNICODE
+)
+
 # DirectX 11 + Compiler libs liegen im Windows SDK; nur linken.
 target_link_libraries(Lumen PRIVATE
     d3d11
