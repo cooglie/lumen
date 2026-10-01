@@ -1,17 +1,12 @@
 # 🌌 Lumen
 
-> **Licht trifft Bewegung.** Eine Open-Source macOS-Menüleisten-App, die deinen Desktop in eine lebende Leinwand verwandelt — durch GPU-Shader-Hintergründe und choreografierte Fenster-Performances.
+> **Licht trifft Bewegung.** Eine Open-Source App, die deinen Desktop in eine lebende Leinwand verwandelt — durch GPU-Shader-Hintergründe und choreografierte Fenster-Performances.
 
 
 
 - **🪐 Aurora** 
 - **🎭 Mosaic**
 
----
-
-## ✨ Vision
-
-Die meisten Mac-Tools sind funktional und grau. Lumen macht den Desktop zu einem **Sinnesraum**: Dein Hintergrund atmet, deine Fenster tanzen. Beides ist nützlich *und* spektakulär — und beides lebt von einer Community, die Shader und Choreografien teilt.
 
 ## 🧩 Features
 
