@@ -1,4 +1,5 @@
 // mosaic.cpp — Mosaic Fenster-Choreografie (Win32) Implementation
+#define NOMINMAX
 #include "mosaic.h"
 #include <cmath>
 #include <cstdio>

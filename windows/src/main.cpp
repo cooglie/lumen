@@ -1,3 +1,4 @@
+#define NOMINMAX
 // main.cpp — Lumen für Windows (Win32 + DirectX 11)
 // Tray-Icon + Kontextmenü, Aurora-Render-Loop via Timer, Mosaic-Choreografien.
 #include <windows.h>

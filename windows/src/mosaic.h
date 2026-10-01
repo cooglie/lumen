@@ -1,5 +1,8 @@
 // mosaic.h — Mosaic Fenster-Choreografie (Win32)
 #pragma once
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
 #include <windows.h>
 #include <vector>
 #include <string>
