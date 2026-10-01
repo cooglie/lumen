@@ -1,4 +1,5 @@
 // aurora.cpp — Aurora Shader-Engine (DirectX 11) Implementation
+#define NOMINMAX
 #include "aurora.h"
 #include <d3dcompiler.h>
 #include <chrono>
@@ -121,15 +122,17 @@ bool AuroraRenderer::BuildPipeline(const std::string& file) {
     ReleasePipeline();
     if (!device_) return false;
 
-    WCHAR path[MAX_PATH];
-    GetModuleFileNameW(GetModuleHandle(nullptr), path, MAX_PATH);
-    PathRemoveFileSpecW(path);
-    std::wstring full = std::wstring(path) + L"\\shaders\\" + std::wstring(file.begin(), file.end());
+    WCHAR exePath[MAX_PATH];
+    GetModuleFileNameW(GetModuleHandle(nullptr), exePath, MAX_PATH);
+    std::wstring dir(exePath);
+    size_t bs = dir.find_last_of(L'\\');
+    if (bs != std::wstring::npos) dir = dir.substr(0, bs);
+    std::wstring full = dir + L"\\shaders\\" + std::wstring(file.begin(), file.end());
 
     UINT cflags = D3DCOMPILE_OPTIMIZATION_LEVEL3;
     ID3DBlob* vsb = nullptr, * psb = nullptr, * err = nullptr;
     // Vertex-Shader aus common.hlsl (LumenVS).
-    std::wstring cfull = std::wstring(path) + L"\\shaders\\common.hlsl";
+    std::wstring cfull = dir + L"\\shaders\\common.hlsl";
     if (FAILED(D3DCompileFromFile(cfull.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE,
                                   "LumenVS", "vs_5_0", cflags, 0, &vsb, &err))) {
         if (err) { err->Release(); }
