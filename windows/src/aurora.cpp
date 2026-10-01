@@ -70,7 +70,7 @@ bool AuroraRenderer::CreateOverlayWindow() {
     return true;
 }
 
-bool AuroraRenderer::CreateDeviceAndSwapchain() {
+bool AuroraRenderer::CreateDeviceAndSwapChain() {
     DXGI_SWAP_CHAIN_DESC sc = {};
     sc.BufferCount = 2;
     sc.BufferDesc.Width  = GetSystemMetrics(SM_CXSCREEN);
