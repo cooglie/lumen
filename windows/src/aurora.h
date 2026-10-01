@@ -37,7 +37,7 @@ public:
 
 private:
     bool CreateOverlayWindow();
-    bool CreateDeviceAndSwapchain();
+    bool CreateDeviceAndSwapChain();
     bool BuildPipeline(const std::string& file);
     void ReleasePipeline();
 
