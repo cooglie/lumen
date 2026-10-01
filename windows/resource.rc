@@ -1,0 +1,4 @@
+// resource.rc — bindet das App-Icon (IDI_APPICON = 101) ein.
+#include <windows.h>
+
+101 ICON "lumen.ico"
