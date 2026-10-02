@@ -14,9 +14,14 @@ struct ShaderDescriptor: Equatable {
 enum ShaderPackLoader {
 
     static let bundled: [ShaderDescriptor] = [
-        ShaderDescriptor(name: "Nebula",         fragmentFunction: "nebula_fragment",  sourceFile: "Nebula.metal"),
-        ShaderDescriptor(name: "Aurora Borealis", fragmentFunction: "aurora_fragment", sourceFile: "AuroraBorealis.metal"),
-        ShaderDescriptor(name: "Plasma Field",   fragmentFunction: "plasma_fragment",  sourceFile: "PlasmaField.metal")
+        ShaderDescriptor(name: "Nebula",          fragmentFunction: "nebula_fragment",   sourceFile: "Nebula.metal"),
+        ShaderDescriptor(name: "Aurora Borealis",  fragmentFunction: "aurora_fragment",  sourceFile: "AuroraBorealis.metal"),
+        ShaderDescriptor(name: "Plasma Field",    fragmentFunction: "plasma_fragment",  sourceFile: "PlasmaField.metal"),
+        ShaderDescriptor(name: "Starfield",       fragmentFunction: "starfield_fragment", sourceFile: "Starfield.metal"),
+        ShaderDescriptor(name: "Lava Lamp",       fragmentFunction: "lavalamp_fragment", sourceFile: "LavaLamp.metal"),
+        ShaderDescriptor(name: "Cyber Grid",      fragmentFunction: "cybergrid_fragment", sourceFile: "CyberGrid.metal"),
+        ShaderDescriptor(name: "Ocean",           fragmentFunction: "ocean_fragment",    sourceFile: "Ocean.metal"),
+        ShaderDescriptor(name: "Fireworks",       fragmentFunction: "fireworks_fragment", sourceFile: "Fireworks.metal")
     ]
 
     /// Liefert den kombinierten Quelltext (Common + Shader) für makeLibrary(source:).

@@ -21,7 +21,12 @@ AuroraRenderer::AuroraRenderer() {
     shaders_ = {
         { L"Nebula",          "nebula.hlsl" },
         { L"Aurora Borealis", "aurora.hlsl" },
-        { L"Plasma Field",    "plasma.hlsl" }
+        { L"Plasma Field",    "plasma.hlsl" },
+        { L"Starfield",       "starfield.hlsl" },
+        { L"Lava Lamp",       "lavalamp.hlsl" },
+        { L"Cyber Grid",      "cybergrid.hlsl" },
+        { L"Ocean",           "ocean.hlsl" },
+        { L"Fireworks",       "fireworks.hlsl" }
     };
 }
 
