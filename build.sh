@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# build.sh — Kompiliert Lumen (Intel x86_64) und baut das .app-Bundle.
+# build.sh — Kompiliert Lumen (Universal Binary: x86_64 + arm64) und baut das .app-Bundle.
 #
 # Nutzung:  cd Lumen && bash build.sh
 #
@@ -9,15 +9,14 @@ set -e
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 SRC="$ROOT/Sources/Lumen"
-BUILD="$ROOT/.build-x86"
+BUILD="$ROOT/.build-universal"
 APP_DIR="$ROOT/app/Lumen.app"
 
 SDK=$(xcrun --sdk macosx --show-sdk-path)
 SWIFT="swiftc"
-ARCH="x86_64"
 FRAMEWORKS="-framework AppKit -framework Metal -framework QuartzCore -framework CoreVideo -framework ApplicationServices -framework Foundation"
 
-echo "=== Lumen Build (Intel x86_64) ==="
+echo "=== Lumen Build (Universal Binary: x86_64 + arm64) ==="
 echo "SDK: $SDK"
 echo ""
 
@@ -30,18 +29,35 @@ echo ""
 
 mkdir -p "$BUILD"
 
-# Kompilieren.
-echo "Kompiliere..."
+# --- Intel (x86_64) ---
+echo "Kompiliere x86_64 (Intel)..."
 $SWIFT \
-    -target "$ARCH-apple-macos12.0" \
+    -target x86_64-apple-macos12.0 \
     -sdk "$SDK" \
     -parse-as-library \
     -O \
     $FRAMEWORKS \
-    -o "$BUILD/Lumen" \
+    -o "$BUILD/Lumen-x86_64" \
     $SOURCES
+echo "✅ x86_64: $BUILD/Lumen-x86_64"
 
-echo "✅ Kompiliert: $BUILD/Lumen"
+# --- Apple Silicon (arm64) ---
+echo "Kompiliere arm64 (Apple Silicon)..."
+$SWIFT \
+    -target arm64-apple-macos12.0 \
+    -sdk "$SDK" \
+    -parse-as-library \
+    -O \
+    $FRAMEWORKS \
+    -o "$BUILD/Lumen-arm64" \
+    $SOURCES
+echo "✅ arm64: $BUILD/Lumen-arm64"
+
+# --- Universal Binary via lipo ---
+echo "Füge zu Universal Binary zusammen (lipo)..."
+lipo -create -output "$BUILD/Lumen" "$BUILD/Lumen-x86_64" "$BUILD/Lumen-arm64"
+echo "✅ Universal: $BUILD/Lumen"
+lipo -archs "$BUILD/Lumen"
 
 # .app-Bundle bauen.
 echo ""
@@ -69,6 +85,9 @@ xattr -d com.apple.quarantine "$APP_DIR" 2>/dev/null || true
 
 echo ""
 echo "✅ App gebaut: $APP_DIR"
+echo ""
+echo "Architekturen:"
+lipo -archs "$APP_DIR/Contents/MacOS/Lumen"
 echo ""
 echo "Starten mit:"
 echo "  open \"$APP_DIR\""
