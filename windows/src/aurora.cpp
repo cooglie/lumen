@@ -26,7 +26,9 @@ AuroraRenderer::AuroraRenderer() {
         { L"Lava Lamp",       "lavalamp.hlsl" },
         { L"Cyber Grid",      "cybergrid.hlsl" },
         { L"Ocean",           "ocean.hlsl" },
-        { L"Fireworks",       "fireworks.hlsl" }
+        { L"Fireworks",       "fireworks.hlsl" },
+        { L"Voronoi",         "voronoi.hlsl" },
+        { L"Rain Ripples",    "rainripples.hlsl" }
     };
 }
 
