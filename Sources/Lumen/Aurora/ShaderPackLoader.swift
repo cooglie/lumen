@@ -21,7 +21,11 @@ enum ShaderPackLoader {
         ShaderDescriptor(name: "Lava Lamp",       fragmentFunction: "lavalamp_fragment", sourceFile: "LavaLamp.metal"),
         ShaderDescriptor(name: "Cyber Grid",      fragmentFunction: "cybergrid_fragment", sourceFile: "CyberGrid.metal"),
         ShaderDescriptor(name: "Ocean",           fragmentFunction: "ocean_fragment",    sourceFile: "Ocean.metal"),
-        ShaderDescriptor(name: "Fireworks",       fragmentFunction: "fireworks_fragment", sourceFile: "Fireworks.metal")
+        ShaderDescriptor(name: "Fireworks",       fragmentFunction: "fireworks_fragment", sourceFile: "Fireworks.metal"),
+        ShaderDescriptor(name: "Voronoi",         fragmentFunction: "voronoi_fragment",   sourceFile: "Voronoi.metal"),
+        ShaderDescriptor(name: "Rain Ripples",    fragmentFunction: "rainripples_fragment", sourceFile: "RainRipples.metal"),
+        ShaderDescriptor(name: "Matrix Rain",     fragmentFunction: "matrixrain_fragment", sourceFile: "MatrixRain.metal"),
+        ShaderDescriptor(name: "Kaleidoscope",    fragmentFunction: "kaleidoscope_fragment", sourceFile: "Kaleidoscope.metal")
     ]
 
     /// Liefert den kombinierten Quelltext (Common + Shader) für makeLibrary(source:).

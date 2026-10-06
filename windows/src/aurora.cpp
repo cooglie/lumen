@@ -28,7 +28,9 @@ AuroraRenderer::AuroraRenderer() {
         { L"Ocean",           "ocean.hlsl" },
         { L"Fireworks",       "fireworks.hlsl" },
         { L"Voronoi",         "voronoi.hlsl" },
-        { L"Rain Ripples",    "rainripples.hlsl" }
+        { L"Rain Ripples",    "rainripples.hlsl" },
+        { L"Matrix Rain",     "matrixrain.hlsl" },
+        { L"Kaleidoscope",    "kaleidoscope.hlsl" }
     };
 }
 
