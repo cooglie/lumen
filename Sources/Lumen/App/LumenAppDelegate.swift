@@ -12,10 +12,14 @@ final class LumenAppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         if let button = statusItem.button {
-            button.image = NSImage(
-                systemSymbolName: "sparkles",
-                accessibilityDescription: "Lumen"
-            )
+            if #available(macOS 11.0, *) {
+                button.image = NSImage(
+                    systemSymbolName: "sparkles",
+                    accessibilityDescription: "Lumen"
+                )
+            } else {
+                button.image = LumenAppDelegate.legacyStatusIcon
+            }
         }
 
         rebuildMenu()
@@ -100,4 +104,26 @@ final class LumenAppDelegate: NSObject, NSApplicationDelegate {
         item.isEnabled = false
         return item
     }
+
+    /// Einfach gezeichnetes Menüleisten-Icon für macOS < 11 (keine SF Symbols).
+    private static let legacyStatusIcon: NSImage = {
+        let size = NSSize(width: 18, height: 18)
+        let image = NSImage(size: size)
+        image.lockFocus()
+        NSColor.labelColor.setFill()
+        let path = NSBezierPath(ovalIn: NSRect(x: 4, y: 4, width: 10, height: 10))
+        path.fill()
+        // Vier kleine Strahlen als "Sparkles".
+        for angle in stride(from: 0.0, to: 360.0, by: 90.0) {
+            let rad = angle * .pi / 180.0
+            let ray = NSBezierPath()
+            ray.move(to: NSPoint(x: 9 + cos(rad) * 6, y: 9 + sin(rad) * 6))
+            ray.line(to: NSPoint(x: 9 + cos(rad) * 8, y: 9 + sin(rad) * 8))
+            ray.lineWidth = 1.5
+            ray.stroke()
+        }
+        image.unlockFocus()
+        image.isTemplate = true
+        return image
+    }()
 }
