@@ -32,7 +32,7 @@ mkdir -p "$BUILD"
 # --- Intel (x86_64) ---
 echo "Kompiliere x86_64 (Intel)..."
 $SWIFT \
-    -target x86_64-apple-macos12.0 \
+    -target x86_64-apple-macos10.13 \
     -sdk "$SDK" \
     -parse-as-library \
     -O \
@@ -44,7 +44,7 @@ echo "✅ x86_64: $BUILD/Lumen-x86_64"
 # --- Apple Silicon (arm64) ---
 echo "Kompiliere arm64 (Apple Silicon)..."
 $SWIFT \
-    -target arm64-apple-macos12.0 \
+    -target arm64-apple-macos11.0 \
     -sdk "$SDK" \
     -parse-as-library \
     -O \
