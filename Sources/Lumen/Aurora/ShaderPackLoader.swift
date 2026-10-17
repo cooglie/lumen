@@ -25,7 +25,9 @@ enum ShaderPackLoader {
         ShaderDescriptor(name: "Voronoi",         fragmentFunction: "voronoi_fragment",   sourceFile: "Voronoi.metal"),
         ShaderDescriptor(name: "Rain Ripples",    fragmentFunction: "rainripples_fragment", sourceFile: "RainRipples.metal"),
         ShaderDescriptor(name: "Matrix Rain",     fragmentFunction: "matrixrain_fragment", sourceFile: "MatrixRain.metal"),
-        ShaderDescriptor(name: "Kaleidoscope",    fragmentFunction: "kaleidoscope_fragment", sourceFile: "Kaleidoscope.metal")
+        ShaderDescriptor(name: "Kaleidoscope",    fragmentFunction: "kaleidoscope_fragment", sourceFile: "Kaleidoscope.metal"),
+        ShaderDescriptor(name: "Sunset",           fragmentFunction: "sunset_fragment",    sourceFile: "Sunset.metal"),
+        ShaderDescriptor(name: "Galaxy",           fragmentFunction: "galaxy_fragment",    sourceFile: "Galaxy.metal")
     ]
 
     /// Liefert den kombinierten Quelltext (Common + Shader) für makeLibrary(source:).
