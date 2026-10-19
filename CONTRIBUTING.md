@@ -40,6 +40,10 @@ swift run Lumen
 > Hinweis: Vollständige Wallpaper-/Accessibility-Funktionen brauchen Xcode + TCC-Berechtigungen.
 > Das SPM-Gerüst dient der Modul-Entwicklung.
 
+## 📜 Lizenz-Beitrag
+
+By submitting a pull request, you agree that your contribution is licensed under the MIT license.
+
 ## 💬 Kontakt
 
 - Issues für Bugs & Features
