@@ -1,6 +1,6 @@
 # 🌌 Lumen
 
-> **Licht trifft Bewegung.** Eine Open-Source App, die deinen Desktop in eine lebende Leinwand verwandelt — durch GPU-Shader-Hintergründe und choreografierte Fenster-Performances.
+> **Licht trifft Bewegung.** Eine App, die deinen Desktop in eine lebende Leinwand verwandelt — durch GPU-Shader-Hintergründe und choreografierte Fenster-Performances.
 
 
 
@@ -48,11 +48,3 @@ Sources/Lumen/
 swift build
 swift run Lumen
 ```
-
-
-
-
-
-## 📜 Lizenz
-
-MIT — siehe [LICENSE](LICENSE).

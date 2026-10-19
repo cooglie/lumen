@@ -12,7 +12,6 @@ shader
 wallpaper-engine
 window-management
 accessibility
-open-source
 swift
 appkit
 desktop-customization
@@ -24,7 +23,7 @@ procedural
 
 ## Description (für das Zahnrad-Menü)
 ```
-Lumen — Where light meets motion. Open-source macOS menu-bar app: real-time Metal shader wallpapers (Aurora) + choreographed window animations (Mosaic). Native Swift / AppKit / Metal. MIT.
+Lumen — Where light meets motion. macOS menu-bar app: real-time Metal shader wallpapers (Aurora) + choreographed window animations (Mosaic). Native Swift / AppKit / Metal.
 ```
 
 ## Erste Release-Tags (empfohlen)
@@ -43,5 +42,3 @@ Lumen — Where light meets motion. Open-source macOS menu-bar app: real-time Me
 - ✅ Discussions aktivieren (Settings → Features): für Shader-Showcases & Ideen
 - ❌ Wiki deaktiviert (Doku bleibt im Repo)
 
-## Lizenz
-MIT (bereits als `LICENSE` im Repo)
