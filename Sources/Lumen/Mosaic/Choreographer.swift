@@ -9,13 +9,18 @@ final class Choreographer {
     private var animationTimer: Timer?
 
     /// Führt eine Choreografie aus. Prüft zuerst Accessibility-Berechtigung.
+    ///
+    /// Accessibility wird **nur** für Mosaic (Fenstersteuerung) benötigt und
+    /// **ausschließlich** angefordert, wenn der Nutzer aktiv eine Choreografie
+    /// startet. Aurora (Shader-Wallpaper) funktioniert vollständig ohne diese
+    /// Berechtigung und wird nie danach fragen.
     func perform(_ choreography: Choreography) {
         // Laufende Animation stoppen.
         animationTimer?.invalidate()
 
         guard windowService.hasAccessibilityPermission() else {
             LumenLog.error("Keine Accessibility-Berechtigung — Fenster lassen sich nicht bewegen.", category: "mosaic")
-            windowService.requestAccessibilityPermission()
+            AccessibilityPrompt.explainAndRequest()
             return
         }
 

@@ -7,6 +7,7 @@ final class LumenAppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
     private let shaderEngine = ShaderEngine.shared
     private let choreographer = Choreographer()
+    private let windowService = WindowService()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -54,6 +55,17 @@ final class LumenAppDelegate: NSObject, NSApplicationDelegate {
 
         // --- Mosaic ---
         menu.addItem(makeHeader("🎭 Mosaic"))
+
+        // Accessibility-Status transparent anzeigen.
+        let axGranted = windowService.hasAccessibilityPermission()
+        let statusItem = NSMenuItem(
+            title: axGranted ? "✓ Bedienhilfen aktiv" : "⚠ Bedienhilfen fehlen — für Fenstersteuerung nötig",
+            action: nil, keyEquivalent: ""
+        )
+        statusItem.isEnabled = false
+        menu.addItem(statusItem)
+        menu.addItem(.separator())
+
         for choreography in Choreography.builtin {
             menu.addItem(withTitle: choreography.name, action: #selector(runChoreography(_:)), keyEquivalent: "")
         }

@@ -80,8 +80,10 @@ cp "$ROOT/app/AppIcon.icns" "$APP_DIR/Contents/Resources/AppIcon.icns"
 cp "$SRC/Resources/Shaders/"*.metal "$APP_DIR/Contents/Resources/Shaders/"
 cp "$SRC/Resources/Choreographies/"*.json "$APP_DIR/Contents/Resources/Choreographies/"
 
-# Quarantine-Flag entfernen (damit Gatekeeper nicht blockt).
-xattr -d com.apple.quarantine "$APP_DIR" 2>/dev/null || true
+# WICHTIG: Keine automatische Quarantäne-Entfernung mehr.
+# Gatekeeper-Checks bleiben aktiv. Unsignierte Builds laufen nur, wenn der
+# Nutzer sie explizit über Systemeinstellungen → Datenschutz → Sicherheit
+# freigibt. Für verteilbare Builds: Signierung + Notarisierung einrichten.
 
 echo ""
 echo "✅ App gebaut: $APP_DIR"
@@ -92,5 +94,9 @@ echo ""
 echo "Starten mit:"
 echo "  open \"$APP_DIR\""
 echo ""
-echo "Hinweis: Für Mosaic (Fenster-Choreografie) benötigt Lumen"
-echo "  Bedienhilfen-Berechtigung: Systemeinstellungen → Datenschutz → Bedienhilfen"
+echo "Hinweis:"
+echo "  • Dieser Build ist UNSIGNIERT. Beim ersten Start blockt Gatekeeper."
+echo "    Freigeben via: Systemeinstellungen → Datenschutz → Sicherheit."
+echo "  • Für Mosaic (Fenster-Choreografie) benötigt Lumen"
+echo "    Bedienhilfen-Berechtigung: Systemeinstellungen → Datenschutz → Bedienhilfen."
+echo "  • Aurora (Shader-Wallpaper) funktioniert OHNE Accessibility-Berechtigung."
